@@ -15,26 +15,29 @@ export function moveClockwise(index) {
 }
 
 export function moveCounterClockwise(index) {
-  return({type: MOVE_COUNTERCLOCKWISE, payload: index})
+  return({type: MOVE_COUNTERCLOCKWISE, payload: index});
 }
 
-export function selectAnswer() { }
+export function selectAnswer(selected) { 
+  return({type: SET_SELECTED_ANSWER, payload: selected})
+}
 
 export function setMessage() { }
 
-export function setQuiz() { }
+export function setQuiz(question) {
+  return({type: SET_QUIZ_INTO_STATE, payload: question});
+}
 
 export function inputChange() { }
 
 export function resetForm() { }
 
 // ❗ Async action creators
-export function fetchQuiz() {
-  return function (dispatch) {
+export const fetchQuiz = () => dispatch => {
+  dispatch(setQuiz(null));
     // First, dispatch an action to reset the quiz state (so the "Loading next quiz..." message can display)
     // On successful GET:
     // - Dispatch an action to send the obtained quiz to its state
-  }
 }
 export function postAnswer() {
   return function (dispatch) {
