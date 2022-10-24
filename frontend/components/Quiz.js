@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {selectAnswer, postAnswer, setMessage, setQuiz, fetchQuiz} from '../state/action-creators';
 
@@ -67,8 +67,7 @@ function Quiz(props) {
 const mapStateToProps = state => {
   return {
     quiz: state.quiz,
-    selectedAnswer: state.selectedAnswer,
-    infoMessage: state.infoMessage
+    selectedAnswer: state.selectedAnswer
   }
 }
 
