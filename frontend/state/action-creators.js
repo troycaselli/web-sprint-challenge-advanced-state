@@ -50,7 +50,11 @@ export const fetchQuiz = () => dispatch => {
 }
 export const postAnswer = (quiz, answer) => dispatch => {
   axios.post('http://localhost:9000/api/quiz/answer', { "quiz_id": quiz, "answer_id": answer })
-    .then(res => dispatch(setMessage(res.data.message)))
+    .then(res => {
+      dispatch(selectAnswer(null));
+      dispatch(setMessage(res.data.message));
+      dispatch(fetchQuiz());
+    })
     .catch(err => console.error(err));
     // On successful POST:
     // - Dispatch an action to reset the selected answer state
