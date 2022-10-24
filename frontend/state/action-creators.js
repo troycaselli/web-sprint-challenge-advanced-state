@@ -32,7 +32,9 @@ export function setQuiz(question) {
   return({type: SET_QUIZ_INTO_STATE, payload: question});
 }
 
-export function inputChange() { }
+export function inputChange(object) {
+  return({type: INPUT_CHANGE, payload: object})
+}
 
 export function resetForm() { }
 
