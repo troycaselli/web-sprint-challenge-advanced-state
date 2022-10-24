@@ -24,7 +24,9 @@ export function selectAnswer(selected) {
   return({type: SET_SELECTED_ANSWER, payload: selected})
 }
 
-export function setMessage() { }
+export function setMessage(message) { 
+  return({type: SET_INFO_MESSAGE, payload: message})
+}
 
 export function setQuiz(question) {
   return({type: SET_QUIZ_INTO_STATE, payload: question});
@@ -46,14 +48,16 @@ export const fetchQuiz = () => dispatch => {
     })
     .catch(err => console.error(err));
 }
-export function postAnswer() {
-  return function (dispatch) {
+export const postAnswer = (quiz, answer) => dispatch => {
+  axios.post('http://localhost:9000/api/quiz/answer', { "quiz_id": quiz, "answer_id": answer })
+    .then(res => dispatch(setMessage(res.data.message)))
+    .catch(err => console.error(err));
     // On successful POST:
     // - Dispatch an action to reset the selected answer state
     // - Dispatch an action to set the server message to state
     // - Dispatch the fetching of the next quiz
-  }
 }
+
 export function postQuiz() {
   return function (dispatch) {
     // On successful POST:

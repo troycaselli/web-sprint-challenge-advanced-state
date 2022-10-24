@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {selectAnswer, postAnswer, setMessage, setQuiz, fetchQuiz} from '../state/action-creators';
 
 function Quiz(props) {
-  const [disabled, setDisabled] = useState(true);
+  const disabled = true;
 
   const {
     quiz, 
@@ -52,7 +52,7 @@ function Quiz(props) {
 
             <button 
               id="submitAnswerBtn" 
-              onSubmit={() => postAnswer(selectedAnswer)}
+              onClick={() => postAnswer(quiz.quiz_id, selectedAnswer)}
               disabled={selectedAnswer ? !disabled : disabled}
             >
               Submit answer
