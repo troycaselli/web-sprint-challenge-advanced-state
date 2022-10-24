@@ -13,23 +13,22 @@ function Quiz(props) {
   return (
     <div id="wrapper">
       {
-        // quiz already in state? Let's use that, otherwise render "Loading next quiz..."
         quiz !== null ? (
           <>
-            <h2>What is a closure?</h2>
+            <h2>{quiz.question}</h2>
 
             <div id="quizAnswers">
-              <div className="answer selected">
-                A function
+              <div className={selectedAnswer === quiz.answers[0].answer_id ? 'answer selected' : 'answer'}>
+                {quiz.answers[0].text}
                 <button>
-                  SELECTED
+                  {selectedAnswer === quiz.answers[0].answer_id ? 'SELECTED' : 'Select'}
                 </button>
               </div>
 
-              <div className="answer">
-                An elephant
+              <div className={selectedAnswer === quiz.answers[1].answer_id ? 'answer selected' : 'answer'}>
+              {quiz.answers[1].text}
                 <button>
-                  Select
+                  {selectedAnswer === quiz.answers[1].answer_id ? 'SELECTED' : 'Select'}
                 </button>
               </div>
             </div>
