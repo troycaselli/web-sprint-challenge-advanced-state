@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import * as actionCreators from '../state/action-creators'
 
 export function Form(props) {
+  const disabled = true;
   const {form, inputChange, postQuiz} = props;
 
   const onChange = evt => {
@@ -21,7 +22,12 @@ export function Form(props) {
       <input maxLength={50} onChange={onChange} value={form.newQuestion} id="newQuestion" placeholder="Enter question" />
       <input maxLength={50} onChange={onChange} value={form.newTrueAnswer} id="newTrueAnswer" placeholder="Enter true answer" />
       <input maxLength={50} onChange={onChange} value={form.newFalseAnswer} id="newFalseAnswer" placeholder="Enter false answer" />
-      <button id="submitNewQuizBtn">Submit new quiz</button>
+      <button 
+        id="submitNewQuizBtn" 
+        disabled={form.newQuestion.trim().length > 0 && form.newTrueAnswer.trim().length > 0 && form.newFalseAnswer.trim().length > 0 ? !disabled : disabled}
+      >
+        Submit new quiz
+      </button>
     </form>
   )
 }
